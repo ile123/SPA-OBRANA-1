@@ -270,12 +270,13 @@ void brisanje_pod_odredenim_uvjetima(Dictionary dict) {
 }
 
 //popravi kasnije
-void dodavanje_elementa_nakon_nekog_uvjeta(Dictionary dict) {
-	Dictionary temp = dict, novi = (Word*)malloc(sizeof(Word)),temp2;
+void dodavanje_elementa_nakon_nekog_uvjeta(Dictionary dict,char* str) {
+	Dictionary temp = dict,novi;
 	while (temp->next != NULL) {
-		novi->word = "OK";
-		novi->count = 0;
-		if (strlen(temp->word) > 7) {
+		if (strlen(temp->word) > 5) {
+			novi = (Word*)malloc(sizeof(Word));
+			novi->word = strdup(str);
+			novi->count = 1;
 			novi->next = temp->next;
 			temp->next = novi;
 		}
