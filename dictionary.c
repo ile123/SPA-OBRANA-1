@@ -300,13 +300,18 @@ void kopirani_elemnti_nova_lista(Dictionary kopirani_list,Dictionary dict, int k
 		i++;
 	}
 }
-//popravi kasnije
+//RADi
 void zamjena_prvi_zdanji(Dictionary dict) {
-	Dictionary temp = dict, prvi=dict->next, zadnji,temp2;
-	while (temp->next != NULL) {
-		temp = temp->next;
+	Dictionary temp = dict, prvi = dict->next,setac=prvi->next,prijesetac=prvi,zadnji;
+	while (setac->next != NULL) {
+		setac = setac->next;
+		prijesetac = prijesetac->next;
 	}
-
+	zadnji = setac;
+	temp->next = setac;
+	setac->next = prvi->next;
+	prijesetac->next = prvi;
+	prvi->next = NULL;
 }
 //radi
 void lista_sa_odrdedenim_rjecima(Dictionary dict,Dictionary nova_lista) {
