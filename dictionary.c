@@ -330,3 +330,26 @@ void lista_sa_odrdedenim_rjecima(Dictionary dict,Dictionary nova_lista) {
 		temp = temp->next;
 	}
 }
+//radi
+void dodavanje_iz_niza_u_listu(Dictionary dict, char* niz_rijeci[], int velicina_niza) {
+	for (int i = 0;i < velicina_niza;i++) {
+		Dictionary temp = dict,novi=(Word*)malloc(sizeof(Word));
+		novi->word = strdup(niz_rijeci[i]);
+		novi->count = 1;
+		novi->next = NULL;
+		while (temp->next != NULL) {
+			temp = temp->next;
+		}
+		temp->next = novi;
+	}
+}
+//radi
+char** dodavanje_iz_liste_u_niz(Dictionary dict, int n) {
+	Dictionary temp = dict->next;
+	char** niz_vratit = (char*)malloc(n* sizeof(char*));
+	for (int i = 0;i < n;i++) {
+		niz_vratit[i] = temp->word;
+		temp = temp->next;
+	}
+	return niz_vratit;
+}
